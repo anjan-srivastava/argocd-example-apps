@@ -1,0 +1,121 @@
+kind: CustomResourceDefinition
+apiVersion: apiextensions.k8s.io/v1
+metadata:
+  name: cruxtokens.rrsd.zetaapps.in
+spec:
+  group: rrsd.zetaapps.in
+  names:
+    plural: cruxtokens
+    singular: cruxtoken
+    kind: CruxToken
+    listKind: CruxTokenList
+  scope: Namespaced
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - cluster
+                - appName
+                - sandboxCode
+                - realmId
+              properties:
+                appName:
+                  type: string
+                cluster:
+                  type: string
+                metadata:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    isOptional:
+                      type: boolean
+                    key:
+                      type: string
+                    labels:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    name:
+                      type: string
+                    requester:
+                      type: object
+                      properties:
+                        app:
+                          type: string
+                        appVersion:
+                          type: string
+                        module:
+                          type: string
+                        moduleVersion:
+                          type: string
+                    scope:
+                      type: string
+                      enum:
+                        - God
+                        - Tenant
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                    tenantCode:
+                      type: string
+                    tenantId:
+                      type: string
+                realmId:
+                  type: string
+                sandbox:
+                  type: object
+                  properties:
+                    roles:
+                      type: array
+                      items:
+                        type: string
+                sandboxCode:
+                  type: string
+                tenantId:
+                  type: string
+                vault:
+                  type: object
+                  properties:
+                    path:
+                      type: string
+                zoneSpace:
+                  type: string
+            status:
+              type: object
+              properties:
+                accepted:
+                  type: string
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lastTransitionTime:
+                        type: string
+                      message:
+                        type: string
+                      observedGeneration:
+                        type: integer
+                      reason:
+                        type: string
+                      status:
+                        type: string
+                      type:
+                        type: string
+                success:
+                  type: boolean
+      subresources:
+        status: {}
+  conversion:
+    strategy: None
