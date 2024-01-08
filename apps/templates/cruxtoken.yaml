@@ -14,7 +14,7 @@ spec:
   appName: tachyon-delinquency
   cluster: ruby
   metadata:
-    description: Sample CruxToken
+    description: Sample CruxToken Test1
     id: ruby.cruxtoken.tachyon-delinquency-god-crux-token-resource
     name: tachyon-delinquency-god-crux-token-resource
     requester:
