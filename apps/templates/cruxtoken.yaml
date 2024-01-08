@@ -9,6 +9,7 @@ metadata:
     module: ruby
     version: 0.0.1
   name: god.ruby.cruxtoken.tachyon-delinquency-god-crux-token-resource
+  namespace: default
 spec:
   appName: tachyon-delinquency
   cluster: ruby
